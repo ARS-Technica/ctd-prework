@@ -100,14 +100,14 @@ def higher_lower_game():
     pass
     
 def main():
-    regionSelection = displayMenu()
+    regionSelection = displayMenu() - 1
     print(regionSelection) # Debugging purposes
 
-    regionNames = [Africa, Americas, Asia, Europe, Oceania] 
+    regionNames = ["Africa", "Americas", "Asia", "Europe", "Oceania"] 
 
-    if regionName < 6:
+    if regionSelection < 6:
         print(regionNames[regionSelection])
-    elif  == 6:
+    elif regionSelection == 6:
         # Global
         print("Global")
     else:
