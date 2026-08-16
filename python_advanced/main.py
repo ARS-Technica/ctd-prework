@@ -167,15 +167,15 @@ def getValidMenuSelection():
 
 def main():
     # Flow control
-    regionSelection = displayMenu() - 1
-    # print(regionSelection) # Debugging purposes
+    region_selection = displayMenu()
+    # print(region_selection) # Debugging purposes
 
-    regionNames = ["Africa", "Americas", "Asia", "Europe", "Oceania"] 
+    region_names = ["Africa", "Americas", "Asia", "Europe", "Oceania"] 
 
-    if regionSelection < 6:
-        # print(regionNames[regionSelection])
+    if region_selection < 6:
+        # print(region_names[region_selection])
 
-        region_countries = getCountriesByRegion(regionNames[regionSelection])
+        region_countries = getCountriesByRegion(region_names[region_selection])
         print(region_countries)
 
         populations = getPopulations(region_countries)
@@ -184,9 +184,11 @@ def main():
         # Write the county and population data to a JSON
         writeToJson(populations)
 
-    elif regionSelection == 6:
-        # Global
-        print("Global")
+    elif region_selection == 6:
+        # Global: combines all 5 regions
+        global_data = getGlobalCountriesAndPopulations()
+        print(global_data)
+
     else:
         # End Game
         print("Thanks for playing!")
