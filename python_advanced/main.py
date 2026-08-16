@@ -74,7 +74,13 @@ def get_populations(countries: list[str]) -> list[dict]:
         response = requests.get(url)
         data = response.json()
 
-        results.append({"country": country, "population": None})
+        # Check that the retrieval was successful
+        if data:
+            if isinstance(data, list):
+                item = data[0]
+                results.append({"country": item.get("name", country), "population": item.get("population")})
+            else:
+                results.append({"country": country, "population": None})
     
     return results
    
