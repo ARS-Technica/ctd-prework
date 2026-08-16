@@ -23,5 +23,13 @@ import json # Cache data for processing
 import requests # Make calls to the API
 
 
-country = requests.get('https://countries.dev/alpha/US').json()
-print(country['name'], country['capital'])
+
+# Create a function with game logic
+def higher_lower_game():
+    pass 
+
+
+# Launch the program
+if __name__ == "__main__":
+    higher_lower_game()
+
