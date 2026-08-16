@@ -24,7 +24,7 @@ import requests # Make calls to the API
 
 
 # Countries.dev Functions -----------------------------------------------------
-def get_global_countries_and_populations() -> None:
+def getGlobalCountriesAndPopulations() -> None:
     # Aggregate a list of all countries and populations into one list
     global_regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
     
@@ -40,7 +40,7 @@ response = requests.request("GET", url)
 print(response.text)
 '''
 
-def get_countries_by_region(region: str) -> list[str]:
+def getCountriesByRegion(region: str) -> list[str]:
     url = f"https://countries.dev/region/{region}"
     response = requests.get(url)
     response.raise_for_status()
@@ -59,7 +59,7 @@ response = requests.request("GET", url)
 print(response.text)
 '''
 
-def get_populations(countries: list[str]) -> list[dict]:
+def getPopulations(countries: list[str]) -> list[dict]:
     """
     Retrieve the name and population for a list of countries.
 
@@ -85,6 +85,7 @@ def get_populations(countries: list[str]) -> list[dict]:
         else:
             # Handle failed lookups
             results.append({"country": country, "population": None})
+
     return results
 
 
@@ -133,7 +134,7 @@ def displayMenu():
 
     # return  # Returns nothing
 
-    getValidMenuSelection()
+    return getValidMenuSelection()
 
 
 # Validation for menu selection
@@ -155,7 +156,7 @@ def getValidMenuSelection():
             # Check if the input is in a valid range between 1 and 5
             if (regionNumber >= 1) and (regionNumber <= 7):
                 # Valid input
-                print(regionNumber)
+                # print(regionNumber) # Debugging purposes
                 return regionNumber  # Return it, breaking the loop
             else:
                 print("Sorry.  I didn't understand that.")
@@ -204,30 +205,35 @@ def main():
     if regionSelection < 6:
         # print(regionNames[regionSelection])
 
-        region_countries = get_countries_by_region(regionNames[regionSelection])
+        region_countries = getCountriesByRegion(regionNames[regionSelection])
         print(region_countries)
 
-        populations = get_populations(region_countries)
+        populations = getPopulations(region_countries)
         print(populations)
+
+        # Write the county and population data to a JSON
+        writeToJson(populations)
 
     elif regionSelection == 6:
         # Global
         print("Global")
     else:
         # End Game
-        print("End Game")
+        print("Thanks for playing!")
+        return
 
 
 # Launch the program
 if __name__ == "__main__":
     main()
+
     '''
-    countries = get_countries_by_region("Europe")
+    countries = getCountriesByRegion("Europe")
     print(countries)
     # ['Åland Islands', 'Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Faroe Islands', 'Finland', 'France', 'Germany', 'Gibraltar', 'Greece', 'Guernsey', 'Vatican City', 'Hungary', 'Iceland', 'Ireland', 'Isle of Man', 'Italy', 'Jersey', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'North Macedonia', 'Malta', 'Moldova (Republic of)', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Republic of Kosovo', 'Romania', 'Russian Federation', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Svalbard and Jan Mayen', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom of Great Britain and Northern Ireland']
 
 
-    region_countries = get_countries_by_region("Europe")
+    region_countries = getCountriesByRegion("Europe")
     populations = get_populations(region_countries)
 
     print(populations)
