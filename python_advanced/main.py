@@ -23,6 +23,25 @@ import json # Cache data for processing
 import requests # Make calls to the API
 
 
+# Countries.dev Functions -----------------------------------------------------
+def get_global_countries_and_populations() -> None:
+    global_regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+    
+    retun None
+
+
+def get_countries_by_region(region: str) -> list[str]:
+    pass
+
+
+def get_populations(countries: list[str]) -> list[dict]:
+    results = []
+
+    # return results
+    pass
+
+
+# User Interface Functions ----------------------------------------------------
 def displayMenu():
     # Display the menu
     # [1] Africa, [2] Americas, [3] Asia, [4] Europe, [5] Oceania, [6] Global, [7] End Game
