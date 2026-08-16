@@ -80,10 +80,12 @@ def get_populations(countries: list[str]) -> list[dict]:
             if data:
                 if isinstance(data, list):
                     item = data[0]
-                    results.append({"country": item.get("name", country), "population": item.get("population")})
+                    results.append({
+                        "country": item.get("name", country),
+                        "population": item.get("population")
+                    })
                 else:
                     results.append({"country": country, "population": None})
-    
     return results
    
 
