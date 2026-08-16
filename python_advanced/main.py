@@ -89,14 +89,6 @@ def getPopulations(countries: list[str]) -> list[dict]:
     return results
 
 
-def cacheData(information: list[str]):
-    # Write country and population data in a json file
-
-    with open("country_data.json", "w", encoding="utf-8") as f:
-        f.write(f"data = {formatted_json}\n")
-
-    pass
-
 
 
 # User Interface Functions ----------------------------------------------------
