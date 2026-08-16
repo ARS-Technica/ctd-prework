@@ -67,14 +67,17 @@ print(response.text)
 
 def get_populations(countries: list[str]) -> list[dict]:
     results = []
-    
+
     for country in countries:
-        print(country)    
+        # Use fields=population to minimize the response payload
+        url = f"https://countries.dev/name/{country}?fields=name,population"
+        response = requests.get(url)
+        data = response.json()
 
-    # return results
-    pass
-
-
+        results.append({"country": country, "population": None})
+    
+    return results
+   
 
 
 def cacheData(information: list[str]):
