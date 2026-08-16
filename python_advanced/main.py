@@ -55,7 +55,9 @@ def displayMenu():
     print("-" * 25) # Visual divider
     print() # Blank line for formatting
 
-    return  # Returns nothing
+    # return  # Returns nothing
+
+    getValidMenuSelection()
 
 
 # Validation for menu selection
@@ -75,16 +77,17 @@ def getValidMenuSelection():
             regionNumber = int(menuSelection)
 
             # Check if the input is in a valid range between 1 and 5
-            if (menuSelection >= 1) and (menuSelection <= 7):
+            if (regionNumber >= 1) and (regionNumber <= 7):
                 # Valid input
-                return menuSelection  # Return it, breaking the loop
+                print(regionNumber)
+                return regionNumber  # Return it, breaking the loop
             else:
                 print("Sorry.  I didn't understand that.")
                 # Display error if validation fails
-                print(f"Error: Selection must be a number 1 through 7.")
-                menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
+                print("Error: Selection must be a number 1 through 7.")
+                menuSelection = input("Please select a Menu Item (1-7): ")  # Prompt user again.
         except (ValueError, TypeError):
-            # if menuSelection IS NOT a number
+            # If menuSelection IS NOT a number
             # If execution reaches this point, the input was invalid.  Prompt user again.
             print(f"Error: Please select a menu item with a number 1 through 7.")  # Display error
             menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
@@ -96,6 +99,21 @@ def higher_lower_game():
 
     pass
     
+def main():
+    regionSelection = displayMenu()
+    print(regionSelection) # Debugging purposes
+
+    regionNames = [Africa, Americas, Asia, Europe, Oceania] 
+
+    if regionName < 6:
+        print(regionNames[regionSelection])
+    elif  == 6:
+        # Global
+        print("Global")
+    else:
+        # End Game
+        print("End Game")
+
 
 # Launch the program
 if __name__ == "__main__":
