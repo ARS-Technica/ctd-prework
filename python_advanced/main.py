@@ -60,21 +60,34 @@ def displayMenu():
 
 # Validation for menu selection
 # Used in * function
-def getValidMenuSelection(menuSelection):
+def getValidMenuSelection():
     # Loop until valid input is received
     while True:
         # Prompts user for region
-        menu_selection = input("Which region would you like to play?: ")  
+        menuSelection = input("Which region would you like to play?: ")  
+
+        # Check if input is valid BEFORE returning error
 
         # Check if input is a number
+        # if menuSelection.isdigit() doesn't work.  .isdigit() is a string method.
         try:
             # Attempt to convert the value to an integer to check if it is a number.
-            region_number = int(menu_selection)
+            regionNumber = int(menuSelection)
 
+            # Check if the input is in a valid range between 1 and 5
+            if (menuSelection >= 1) and (menuSelection <= 7):
+                # Valid input
+                return menuSelection  # Return it, breaking the loop
+            else:
+                print("Sorry.  I didn't understand that.")
+                # Display error if validation fails
+                print(f"Error: Selection must be a number 1 through 7.")
+                menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
         except (ValueError, TypeError):
             # if menuSelection IS NOT a number
             # If execution reaches this point, the input was invalid.  Prompt user again.
-            print("Error: Please select a menu item with a number (1 - 6).")  # Display error
+            print(f"Error: Please select a menu item with a number 1 through 7.")  # Display error
+            menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
 
 
 # Create a function with game logic
