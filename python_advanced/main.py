@@ -1,35 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-Code the Dream 
-Advanced Python Prework
+import json
+import requests
 
-Project: Higher or Lower Game
-    
-Created on Monday August 15 2026
 
-"A user runs the program and is prompted to select a region name. The program 
-fetches all countries from the countries.dev API, filters to those in the 
-matching region, and populates a dictionary with each country’s name and 
-population.  The program then selects two of the countries at random and asks 
-the user which one has the larger population. If the user chooses correctly, 
-their score increments upward. If the user chooses incorrently three times, the 
-game ends.
-
-Try to beat your previous high score!"
-"""
-
-# Import libraries
-import json # Cache data for processing
-import requests # Make calls to the API
 
 
 # Countries.dev Functions -----------------------------------------------------
+
 def getGlobalCountriesAndPopulations() -> None:
     combined_data = []
-    
-    # Aggregate a list of all countries and populations into one list
     global_regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
-
+    
     for region in global_regions:
         # Request only name and population using response shaping
         url = f"https://countries.dev/region/{region}?fields=name,population"
@@ -44,22 +24,11 @@ def getGlobalCountriesAndPopulations() -> None:
                 })
         else:
             print(f"Warning: Failed to fetch data for region '{region}' (Status: {response.status_code})")
-    
+
 
     # Cache in JSON format (ountry_data.jso)
     writeToJson(combined_data)
 
-    retun None
-
-
-'''
-# Returns every country in the given region (exact match, case-insensitive).
-
-import requests
-url = "https://countries.dev/region/Asia"
-response = requests.request("GET", url)
-print(response.text)
-'''
 
 def getCountriesByRegion(region: str) -> list[str]:
     url = f"https://countries.dev/region/{region}"
@@ -70,15 +39,6 @@ def getCountriesByRegion(region: str) -> list[str]:
     # Extract the 'name' field from each country object
     return [country["name"] for country in data]
 
-
-'''
-# Retrieve the population of Israel from the country
-
-import requests
-url = "https://countries.dev/name/israel"
-response = requests.request("GET", url)
-print(response.text)
-'''
 
 def getPopulations(countries: list[str]) -> list[dict]:
     """
@@ -126,9 +86,10 @@ def writeToJson(country_list: list[dict]) -> None:
     print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes
 
     return None
-    
+
 
 # User Interface Functions ----------------------------------------------------
+
 def displayMenu():
     # Display the menu
     # [1] Africa, [2] Americas, [3] Asia, [4] Europe, [5] Oceania, [6] Global, [7] End Game
@@ -197,14 +158,6 @@ def getValidMenuSelection():
             # If execution reaches this point, the input was invalid.  Prompt user again.
             print(f"Error: Please select a menu item with a number 1 through 7.")  # Display error
             menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
-
-
-# Create a function with game logic
-def higher_lower_game():
-    # Main Program Execution
-
-    pass
-
 
 
 
