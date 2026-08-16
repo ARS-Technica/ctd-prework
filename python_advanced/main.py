@@ -30,6 +30,16 @@ def get_global_countries_and_populations() -> None:
     retun None
 
 
+
+'''
+# Returns every country in the given region (exact match, case-insensitive).
+
+import requests
+url = "https://countries.dev/region/Asia"
+response = requests.request("GET", url)
+print(response.text)
+'''
+
 def get_countries_by_region(region: str) -> list[str]:
     pass
 
