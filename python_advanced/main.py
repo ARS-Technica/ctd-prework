@@ -189,6 +189,8 @@ def writeToJson(country_list: list[dict]) -> None:
     with open("country_data.json", "w", encoding="utf-8") as f:
         f.write(f"data = {formatted_json}\n")
 
+    print(f"Successfully saved {len(country_list)} records to {filename}") # Debugging purposes
+
     return None
 
 
