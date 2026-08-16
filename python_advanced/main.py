@@ -81,15 +81,17 @@ def get_populations(countries: list[str]) -> list[dict]:
         # Check if the API request succeeded
         if response.status_code == 200:
             data = response.json()
+            # Extract first result if returned as a list, otherwise use object
             item = data[0] if isinstance(data, list) and data else data
+
             results.append({
                 "country": item.get("name", country),
                 "population": item.get("population")
             })
         else:
+            # Handle failed lookups
             results.append({"country": country, "population": None})
     return results
-   
 
 
 def cacheData(information: list[str]):
