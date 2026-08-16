@@ -27,6 +27,15 @@ def displayMenu():
     # Display the menu
     # [1] Africa, [2] Americas, [3] Asia, [4] Europe, [5] Oceania, [6] Global, [7] End Game
 
+    print("Global Population Game")
+    # Display the menu (List the regions of the world)
+    
+    print("-" * 25)
+    print("\nWelcome to the global population game.  To play, select a region of" \
+    "the world. Each round, you will be shown to nations.  Select the nation with" \
+    "the higher population to advance to the next round!\n")
+    print("-" * 25)
+
     pass
 
 # Create a function with game logic
