@@ -41,10 +41,19 @@ print(response.text)
 '''
 
 def get_countries_by_region(region: str) -> list[str]:
+    url = f"https://countries.dev/region/{region}"
     response = requests.get(url)
     response.raise_for_status()
-    country_list = [country["name"] for country]
-    print(country_list)
+    
+    data = response.json()
+    # Extract the 'name' field from each country object
+    return [country["name"] for country in data]
+
+
+'''
+['Åland Islands', 'Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Faroe Islands', 'Finland', 'France', 'Germany', 'Gibraltar', 'Greece', 'Guernsey', 'Vatican City', 'Hungary', 'Iceland', 'Ireland', 'Isle of Man', 'Italy', 'Jersey', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'North Macedonia', 'Malta', 'Moldova (Republic of)', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Republic of Kosovo', 'Romania', 'Russian Federation', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Svalbard and Jan Mayen', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom of Great Britain and Northern Ireland']
+'''
+
 
 
 '''
