@@ -17,3 +17,10 @@ game ends.
 
 Try to beat your previous high score!"
 """
+
+# Import libraries
+import json # Cache data for processing
+import requests # Make calls to the API
+
+
+
