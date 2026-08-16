@@ -72,15 +72,17 @@ def get_populations(countries: list[str]) -> list[dict]:
         # Use fields=population to minimize the response payload
         url = f"https://countries.dev/name/{country}?fields=name,population"
         response = requests.get(url)
-        data = response.json()
 
-        # Check that the retrieval was successful
-        if data:
-            if isinstance(data, list):
-                item = data[0]
-                results.append({"country": item.get("name", country), "population": item.get("population")})
-            else:
-                results.append({"country": country, "population": None})
+        if response.status_code == 200:
+            data = response.json()
+
+            # Check that the retrieval was successful
+            if data:
+                if isinstance(data, list):
+                    item = data[0]
+                    results.append({"country": item.get("name", country), "population": item.get("population")})
+                else:
+                    results.append({"country": country, "population": None})
     
     return results
    
