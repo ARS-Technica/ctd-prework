@@ -18,9 +18,11 @@ def getRegionCountryData(region: str) -> list[dict]:
             {"country": item.get("name"), "population": item.get("population")}
             for item in countries
         ]
-        
-    return []
     
+    # print(f"Warning: Failed to fetch data for region '{region}' (Status: {response.status_code})") # Debugging purposes
+    
+    return []
+
 
 def getGlobalCountriesAndPopulations() -> None:
     combined_data = []
@@ -31,46 +33,6 @@ def getGlobalCountriesAndPopulations() -> None:
 
     # Cache in JSON format (ountry_data.jso)
     writeToJson(combined_data)
-
-
-def getCountriesByRegion(region: str) -> list[str]:
-    url = f"https://countries.dev/region/{region}"
-    response = requests.get(url)
-    response.raise_for_status()
-    
-    data = response.json()
-    # Extract the 'name' field from each country object
-    return [country["name"] for country in data]
-
-
-def getPopulations(countries: list[str]) -> list[dict]:
-    """
-    Retrieve the name and population for a list of countries.
-
-    Queries the countries.dev name endpoint for each country in a list, filtering out everything but 'name' and 'population'.
-    """
-
-    results = []
-    for country in countries:
-        # Request only name and population fields to minimize response payload
-        url = f"https://countries.dev/name/{country}?fields=name,population"
-        response = requests.get(url)
-
-        # Check if the API request succeeded
-        if response.status_code == 200:
-            data = response.json()
-            # Extract first result if returned as a list, otherwise use object
-            item = data[0] if isinstance(data, list) and data else data
-
-            results.append({
-                "country": item.get("name", country),
-                "population": item.get("population")
-            })
-        else:
-            # Handle failed lookups
-            results.append({"country": country, "population": None})
-
-    return results
 
 
 def writeToJson(country_list: list[dict]) -> None:
