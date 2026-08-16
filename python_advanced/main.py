@@ -163,8 +163,6 @@ def getValidMenuSelection():
             menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
 
 
-
-
 def main():
     # Flow control
     region_selection = displayMenu()
@@ -181,18 +179,6 @@ def main():
         # Write the county and population data to a JSON        
         writeToJson(populations)
 
-    if region_selection < 6:
-        # print(region_names[region_selection])
-
-        region_countries = getCountriesByRegion(region_names[region_selection])
-        print(region_countries)
-
-        populations = getPopulations(region_countries)
-        print(populations)
-
-        # Write the county and population data to a JSON
-        writeToJson(populations)
-
     elif region_selection == 6:
         # Global: combines all 5 regions
         global_data = getGlobalCountriesAndPopulations()
@@ -201,7 +187,7 @@ def main():
     else:
         # End Game
         print("Thanks for playing!")
-        return
+        return None
 
 
 # Launch the program
