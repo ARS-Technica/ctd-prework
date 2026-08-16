@@ -58,6 +58,25 @@ def displayMenu():
     return  # Returns nothing
 
 
+# Validation for menu selection
+# Used in * function
+def getValidQuantity(prompt):
+    # Loop until valid input is received
+    while True:
+        # Prompts user for region
+        menu_selection = input("Which region would you like to play?: ")  
+
+        # Check if input is a number
+        try:
+            # Attempt to convert the value to an integer to check if it is a number.
+            region_number = int(menu_selection)
+
+        except (ValueError, TypeError):
+            # if menuSelection IS NOT a number
+            # If execution reaches this point, the input was invalid.  Prompt user again.
+            print("Error: Please select a menu item with a number (1 - 6).")  # Display error
+
+
 # Create a function with game logic
 def higher_lower_game():
     # Main Program Execution
