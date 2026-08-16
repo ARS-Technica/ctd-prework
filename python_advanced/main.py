@@ -172,6 +172,15 @@ def main():
 
     region_names = ["Africa", "Americas", "Asia", "Europe", "Oceania"] 
 
+    if 1 <= region_selection <= 5:
+        # Fetch names AND populations in 1 HTTP request
+        selected_region = region_names[region_selection - 1]
+        populations = getRegionCountryData(selected_region)
+        # print(populations) # Debugging purposes
+
+        # Write the county and population data to a JSON        
+        writeToJson(populations)
+
     if region_selection < 6:
         # print(region_names[region_selection])
 
