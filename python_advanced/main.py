@@ -5,6 +5,22 @@ import requests
 
 
 # Countries.dev Functions -----------------------------------------------------
+def getRegionCountryData(region: str) -> list[dict]:
+    """
+    Fetch all country names and populations for a given region.
+    """
+    url = f"https://countries.dev/region/{region}?fields=name,population"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        countries = response.json()
+        return [
+            {"country": item.get("name"), "population": item.get("population")}
+            for item in countries
+        ]
+        
+    return []
+    
 
 def getGlobalCountriesAndPopulations() -> None:
     combined_data = []
