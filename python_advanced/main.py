@@ -60,7 +60,7 @@ def displayMenu():
 
 # Validation for menu selection
 # Used in * function
-def getValidQuantity(prompt):
+def getValidMenuSelection(menuSelection):
     # Loop until valid input is received
     while True:
         # Prompts user for region
