@@ -174,7 +174,17 @@ def higher_lower_game():
     # Main Program Execution
 
     pass
-    
+
+
+def writeToJson(information: list[str]):
+    # Write country and population data in a json file
+
+    with open("country_data.json", "w", encoding="utf-8") as f:
+        f.write(f"data = {formatted_json}\n")
+
+    pass
+
+
 def main():
     # Flow control
     regionSelection = displayMenu() - 1
