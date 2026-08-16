@@ -58,6 +58,9 @@ print(response.text)
 
 def get_populations(countries: list[str]) -> list[dict]:
     results = []
+    
+    for country in countries:
+        print(country)    
 
     # return results
     pass
