@@ -30,13 +30,34 @@ def displayMenu():
     print("Global Population Game")
     # Display the menu (List the regions of the world)
     
-    print("-" * 25)
+    print("\n")
+    print("-" * 25) # Visual divider
     print("\nWelcome to the global population game.  To play, select a region of" \
     "the world. Each round, you will be shown to nations.  Select the nation with" \
     "the higher population to advance to the next round!\n")
-    print("-" * 25)
+    print("-" * 25) # Visual divider
+    print() # Blank line for formatting
+    print("To begin the game, select a regions:")
+    # 
+    print("-" * 25) # Visual divider
+    print("To begin the game, select a regions:")
+    print("-" * 25) # Visual divider
+    print("-" * 25) # Visual divider
+    print("[1] Africa")
+    print("[2] Americas")
+    print("[3] Asia")
+    print("[4] Europe")
+    print("[5] Oceania")
+    print("\n ...Or choose to play a global round!\n")
+    print("[6] All nations")
+    print("-" * 25) # Visual divider
+    print("-" * 25) # Visual divider
+    print("[7] End game")
+    print("-" * 25) # Visual divider
+    print() # Blank line for formatting
 
-    pass
+    return  # Returns nothing
+
 
 # Create a function with game logic
 def higher_lower_game():
