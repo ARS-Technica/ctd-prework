@@ -23,4 +23,5 @@ import json # Cache data for processing
 import requests # Make calls to the API
 
 
-
+country = requests.get('https://countries.dev/alpha/US').json()
+print(country['name'], country['capital'])
