@@ -158,5 +158,8 @@ def main():
 
 # Launch the program
 if __name__ == "__main__":
-    higher_lower_game()
+    # main()
+
+    countries = get_countries_by_region("Europe")
+    print(countries)
 
