@@ -27,20 +27,7 @@ def getGlobalCountriesAndPopulations() -> None:
     global_regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
     
     for region in global_regions:
-        # Request only name and population using response shaping
-        url = f"https://countries.dev/region/{region}?fields=name,population"
-        response = requests.get(url)
-        
-        if response.status_code == 200:
-            countries = response.json()
-            for item in countries:
-                combined_data.append({
-                    "country": item.get("name"),
-                    "population": item.get("population")
-                })
-        else:
-            print(f"Warning: Failed to fetch data for region '{region}' (Status: {response.status_code})")
-
+        combined_data.extend(getRegionCountryData(region))
 
     # Cache in JSON format (ountry_data.jso)
     writeToJson(combined_data)
