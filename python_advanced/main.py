@@ -66,26 +66,28 @@ print(response.text)
 '''
 
 def get_populations(countries: list[str]) -> list[dict]:
-    results = []
+    """
+    Retrieve the name and population for a list of countries.
 
+    Queries the countries.dev name endpoint for each country in a list, filtering out everything but 'name' and 'population'.
+    """
+
+    results = []
     for country in countries:
-        # Use fields=population to minimize the response payload
+        # Request only name and population fields to minimize response payload
         url = f"https://countries.dev/name/{country}?fields=name,population"
         response = requests.get(url)
 
+        # Check if the API request succeeded
         if response.status_code == 200:
             data = response.json()
-
-            # Check that the retrieval was successful
-            if data:
-                if isinstance(data, list):
-                    item = data[0]
-                    results.append({
-                        "country": item.get("name", country),
-                        "population": item.get("population")
-                    })
-                else:
-                    results.append({"country": country, "population": None})
+            item = data[0] if isinstance(data, list) and data else data
+            results.append({
+                "country": item.get("name", country),
+                "population": item.get("population")
+            })
+        else:
+            results.append({"country": country, "population": None})
     return results
    
 
