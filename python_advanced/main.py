@@ -34,6 +34,15 @@ def get_countries_by_region(region: str) -> list[str]:
     pass
 
 
+'''
+# Retrieve the population of Israel from the country
+
+import requests
+url = "https://countries.dev/name/israel"
+response = requests.request("GET", url)
+print(response.text)
+'''
+
 def get_populations(countries: list[str]) -> list[dict]:
     results = []
 
