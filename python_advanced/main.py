@@ -25,9 +25,17 @@ import requests # Make calls to the API
 
 # Countries.dev Functions -----------------------------------------------------
 def getGlobalCountriesAndPopulations() -> None:
+    combined_data = []
+    
     # Aggregate a list of all countries and populations into one list
     global_regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+
+
     
+
+    # Cache in JSON format (ountry_data.jso)
+    writeToJson(combined_data)
+
     retun None
 
 
