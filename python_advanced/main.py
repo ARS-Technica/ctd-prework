@@ -89,7 +89,23 @@ def getPopulations(countries: list[str]) -> list[dict]:
     return results
 
 
+def writeToJson(country_list: list[dict]) -> None:
+    """
+    Writes a list of country dictionaries to a JSON-formatted file.
 
+    Formatted with the 'data = [...]' prefix.
+    """
+    # Serialize the list of dictionaries to a JSON-formatted string
+    formatted_json = json.dumps(country_list, indent=4, ensure_ascii=False)   
+
+    # Write to file
+    with open("country_data.json", "w", encoding="utf-8") as f:
+        f.write(f"data = {formatted_json}\n")
+
+    print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes
+
+    return None
+    
 
 # User Interface Functions ----------------------------------------------------
 def displayMenu():
@@ -169,22 +185,7 @@ def higher_lower_game():
     pass
 
 
-def writeToJson(country_list: list[dict]) -> None:
-    """
-    Writes a list of country dictionaries to a JSON-formatted file.
 
-    Formatted with the 'data = [...]' prefix.
-    """
-    # Serialize the list of dictionaries to a JSON-formatted string
-    formatted_json = json.dumps(country_list, indent=4, ensure_ascii=False)   
-
-    # Write to file
-    with open("country_data.json", "w", encoding="utf-8") as f:
-        f.write(f"data = {formatted_json}\n")
-
-    print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes
-
-    return None
 
 
 def main():
