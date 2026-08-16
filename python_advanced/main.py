@@ -23,11 +23,18 @@ import json # Cache data for processing
 import requests # Make calls to the API
 
 
+def displayMenu():
+    # Display the menu
+    # [1] Africa, [2] Americas, [3] Asia, [4] Europe, [5] Oceania, [6] Global, [7] End Game
+
+    pass
 
 # Create a function with game logic
 def higher_lower_game():
-    pass 
+    # Main Program Execution
 
+    pass
+    
 
 # Launch the program
 if __name__ == "__main__":
