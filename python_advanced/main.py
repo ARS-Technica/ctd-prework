@@ -41,7 +41,10 @@ print(response.text)
 '''
 
 def get_countries_by_region(region: str) -> list[str]:
-    pass
+    response = requests.get(url)
+    response.raise_for_status()
+    country_list = [country["name"] for country]
+    print(country_list)
 
 
 '''
