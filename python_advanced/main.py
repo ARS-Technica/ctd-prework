@@ -110,8 +110,10 @@ def writeToJson(country_list: list[dict]) -> None:
 def evaluate_guess(guess, first_choice, second_choice):
     pass
 
-def prompt_user(first_choice, second_choice):
-    pass
+def prompt_user(first_choice: dict, second_choice: dict) -> bool:
+    """
+    Prompts user to select A or B.
+    """
 
 # Create a function with game logic
 def higher_lower_game(dataset: list[dict]):
