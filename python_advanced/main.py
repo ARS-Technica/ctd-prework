@@ -126,7 +126,7 @@ def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
         return False
 
 
-def prompt_user(first_choice: dict, second_choice: dict) -> bool:
+def prompt_user(first_choice: dict, second_choice: dict) -> bool | str:
     """
     Prompts the player to choose A, B, or Q to quit.
     """
@@ -246,7 +246,7 @@ def displayMenu() -> int:
     print("[4] Europe")
     print("[5] Oceania")
     print("[6] All nations (Global)")
-    print("-" * 45) # Visual divider    
+    print() # Blank line for formatting
     print("[7] End game")
     print("-" * 45) # Visual divider
 
