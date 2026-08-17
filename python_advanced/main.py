@@ -123,6 +123,15 @@ def higher_lower_game(dataset: list[dict]):
         time.sleep(2)
         endGame()
 
+    # Track the progression of the game
+    score = 0  # Display the number of correct answers
+    strikes = 0 # Track the number of wrong answers
+    max_strikes = 3 # Game ends after three wrong answers
+
+    # Pick two distinct initial countries
+    first, second = random.sample(dataset, 2)
+
+
 # User Interface Functions ----------------------------------------------------
 
 def clear_screen():
