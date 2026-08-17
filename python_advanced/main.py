@@ -134,7 +134,15 @@ def prompt_user(first_choice: dict, second_choice: dict) -> bool:
     """
     Prompts user to select A or B.
     """
+    guess = input("\nWhich country has a higher population? Select A or B: ").strip().lower()
 
+    if guess in ["a", "b"]:
+        # If the user enters a valid answer
+        return evaluate_guess(guess, first_choice, second_choice)
+    else:
+        # Prompt the user to entry only "A" or "B"
+        print("Invalid input. Please enter 'A' or 'B'.")
+        prompt_user()
 
 # Create a function with game logic
 def higher_lower_game(dataset: list[dict]):
