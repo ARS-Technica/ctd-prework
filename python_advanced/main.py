@@ -119,6 +119,13 @@ def higher_lower_game():
 
 # User Interface Functions ----------------------------------------------------
 
+def clear_screen():
+    """
+    Cross-platform terminal clearing code.
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 def displayMenu() -> int:
     """
     Displays the main menu (Lists the regions of the world)
