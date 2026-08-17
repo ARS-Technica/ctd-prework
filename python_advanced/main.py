@@ -165,7 +165,16 @@ def higher_lower_game(dataset: list[dict]):
     # Start with a clean screen to declutter interface
     clear_screen()
 
+    # Round Opening Screen
+    print("=" * 45)
+    print() # Blank line for formatting
+    print("     POPULATION HIGHER OR LOWER GAME")
+    print() # Blank line for formatting
+    print("=" * 45)
+    print() # Blank line for formatting
+    print(f"You have {max_strikes} strikes. Guess which nation is larger!\n")
 
+    # Game Over Screen
     print("=" * 45)
     print() # Blank line for formatting
     print(f"  GAME OVER!  ")
