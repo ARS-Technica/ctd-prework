@@ -77,7 +77,16 @@ def writeToJson(country_list: list[dict]) -> None:
 
 # High or Low Game Functions --------------------------------------------------
 
+# Create a function to evaluate player's guesses
+def evaluate_guess(guess, first_choice, second_choice):
+    pass
 
+def prompt_user(first_choice, second_choice):
+    pass
+
+# Create a function with game logic
+def higher_lower_game():
+    pass 
 
 # User Interface Functions ----------------------------------------------------
 
