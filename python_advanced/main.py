@@ -144,6 +144,7 @@ def prompt_user(first_choice: dict, second_choice: dict) -> bool:
         print("Invalid input. Please enter 'A' or 'B'.")
         prompt_user()
 
+
 # Create a function with game logic
 def higher_lower_game(dataset: list[dict]):
     """
@@ -174,6 +175,14 @@ def higher_lower_game(dataset: list[dict]):
     print() # Blank line for formatting
     print(f"You have {max_strikes} strikes. Guess which nation is larger!\n")
 
+    while strikes < max_strikes:
+        # Round Logic
+
+        # Pause between rounds
+        time.sleep(2.5)
+        clear_screen()
+
+    
     # Game Over Screen
     print("=" * 45)
     print() # Blank line for formatting
