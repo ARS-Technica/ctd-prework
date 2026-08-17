@@ -283,11 +283,27 @@ def end_game(final_score: int | None = None) -> None:
     # Would be replaced with a graphic in future versions
     """
     clear_screen()
-    print() # Blank line for formatting    
-    print("Thanks for playing!")
-    print() # Blank line for formatting   
 
-    return None    
+    print("=" * 45)
+    print() # Blank line for formatting 
+    print("                 GAME OVER")
+    print() # Blank line for formatting 
+    print("=" * 45)
+    print() # Blank line for formatting 
+    
+    if final_score is not None:
+        print(f"\nYour final score was: {final_score}")
+        if final_score >= 10:
+            print("That's incredible!  Great job!")
+        elif final_score >= 5:
+            print("Well done. You really know your geography!")
+        else:
+            print("Better luck next time! Keep practicing!")
+    
+    print("\nThanks for playing the Global Population Game!")
+    print() # Blank line for formatting 
+    print("=" * 45)
+    time.sleep(2)  
    
 
 def main():
