@@ -63,7 +63,7 @@ def getGlobalCountriesAndPopulations() -> list[dict]:
     return combined_data
 
 
-def load_country_data(filename: str = "country_data.json") -> list[dict]:
+def loadCountryData(filename: str = "country_data.json") -> list[dict]:
     """
     Loads country records from country_data.json handling the 'data =' prefix.
 
@@ -95,14 +95,12 @@ def writeToJson(country_list: list[dict]) -> None:
     with open("country_data.json", "w", encoding="utf-8") as f:
         f.write(f"data = {formatted_json}\n")
 
-    # print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes    
-
     return None    
 
 
 # High or Low Game Functions --------------------------------------------------
 
-def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
+def evaluateGuess(guess: str, first_choice: dict, second_choice: dict) -> bool:
     """
     Compares populations and evaluates the player's guess.
     """
@@ -125,7 +123,7 @@ def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
         return False
 
 
-def prompt_user(first_choice: dict, second_choice: dict) -> bool | str:
+def promptUser(first_choice: dict, second_choice: dict) -> bool | str:
     """
     Prompts the player to choose A, B, or Q to quit.
     """
@@ -135,12 +133,12 @@ def prompt_user(first_choice: dict, second_choice: dict) -> bool | str:
         if guess == "q":
             return "q"
         elif guess in ["a", "b"]:
-            return evaluate_guess(guess, first_choice, second_choice)
+            return evaluateGuess(guess, first_choice, second_choice)
         else:
             print("Invalid input. Please enter 'A', 'B', or 'Q'.")
 
 
-def higher_lower_game(dataset: list[dict]):
+def higherLowerGame(dataset: list[dict]):
     """
     Runs the game loop using the loaded dataset.
     """
@@ -156,7 +154,7 @@ def higher_lower_game(dataset: list[dict]):
     # Pick two distinct initial countries
     first, second = random.sample(dataset, 2)
 
-    clear_screen()
+    clearScreen()
 
     # Round Opening Screen
     print("=" * 45)
@@ -178,7 +176,7 @@ def higher_lower_game(dataset: list[dict]):
         print() # Blank line for formatting
         print() # Blank line for formatting
 
-        result = prompt_user(first, second)
+        result = promptUser(first, second)
 
         # Handle player choosing to quit
         if result == "q":
@@ -206,15 +204,15 @@ def higher_lower_game(dataset: list[dict]):
     
         # Pause between rounds
         time.sleep(3)
-        clear_screen()
+        clearScreen()
 
     # Call the Game Over screen with the final score
-    end_game(final_score=score)
+    endGame(final_score=score)
 
 
 # User Interface Functions ----------------------------------------------------
 
-def clear_screen():
+def clearScreen():
     """
     Cross-platform terminal clearing code.
     """
@@ -269,7 +267,7 @@ def getValidMenuSelection() -> int:
 
 # Flow Control Functions ------------------------------------------------------
 
-def end_game(final_score: int | None = None) -> None:
+def endGame(final_score: int | None = None) -> None:
     """
     Displays the game-over or exit screen.
     
@@ -278,7 +276,7 @@ def end_game(final_score: int | None = None) -> None:
 
     # Would be replaced with a graphic in future versions
     """
-    clear_screen()
+    clearScreen()
 
     print("=" * 45)
     print() # Blank line for formatting 
@@ -309,7 +307,7 @@ def main():
     region_names = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
 
     while True:
-        clear_screen()
+        clearScreen()
         region_selection = displayMenu()
 
         if 1 <= region_selection <= 5:
@@ -342,19 +340,19 @@ def main():
 
         else:
             # Option 7: Exit game
-            end_game()
+            endGame()
             break
 
         # Read back the newly created JSON file from disk
-        current_game_data = load_country_data("country_data.json")
+        current_game_data = loadCountryData("country_data.json")
 
         # Launch the Higher/Lower game using the loaded data
-        higher_lower_game(current_game_data)
+        higherLowerGame(current_game_data)
 
         # Check if the player wants to return to the region menu or quit
         play_again = input("\nReturn to main menu to choose another region? (Y/N): ").strip().lower()
         if play_again != "y":
-            print("\nThanks for playing! Goodbye.")
+            endGame()
             break
 
 
