@@ -50,7 +50,10 @@ def getRegionCountryData(region: str) -> list[dict]:
     return []
 
 
-def getGlobalCountriesAndPopulations() -> None:
+def getGlobalCountriesAndPopulations() -> list[dict]:
+    """
+    Combines country data across all major regions and saves to JSON.
+    """
     combined_data = []
     global_regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
     
@@ -59,6 +62,8 @@ def getGlobalCountriesAndPopulations() -> None:
 
     # Cache in JSON format (ountry_data.jso)
     writeToJson(combined_data)
+
+    return combined_data
 
 
 def writeToJson(country_list: list[dict]) -> None:
