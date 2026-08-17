@@ -35,16 +35,17 @@ def getRegionCountryData(region: str) -> list[dict]:
     Fetch all country names and populations for a given region.
     """
     url = f"https://countries.dev/region/{region}?fields=name,population"
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        countries = response.json()
-        return [
-            {"country": item.get("name"), "population": item.get("population")}
-            for item in countries
-        ]
-    
-    # print(f"Warning: Failed to fetch data for region '{region}' (Status: {response.status_code})") # Debugging purposes
+    try:
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            countries = response.json()
+            return [
+                {"country": item.get("name"), "population": item.get("population")}
+                for item in countries
+                if item.get("population") is not None
+            ]
+    except requests.exceptions.RequestException as e:
+        print(f"Error connecting to API: {e}")
     
     return []
 
