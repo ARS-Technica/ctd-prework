@@ -19,10 +19,13 @@ Try to beat your previous high score!"
 """
 
 
-import json
-import requests
+import json # For cashing country data from countries.dev API
+import os # Import os library to clear screen between rounds
+import random # Import random module for choosing Google Searches
+import requests # Read calls to the countries.dev API
+import time # To pause between response to user input and new screen
 
-
+# Import dataset for comparisons
 
 
 # Countries.dev Functions -----------------------------------------------------
