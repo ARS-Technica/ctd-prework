@@ -162,6 +162,22 @@ def higher_lower_game(dataset: list[dict]):
     # Pick two distinct initial countries
     first, second = random.sample(dataset, 2)
 
+    # Start with a clean screen to declutter interface
+    clear_screen()
+
+
+    print("=" * 45)
+    print() # Blank line for formatting
+    print(f"  GAME OVER!  ")
+    print() # Blank line for formatting
+    print("=" * 45)
+    print() # Blank line for formatting
+    print(f"  Final Score: {score}")
+    print() # Blank line for formatting
+    print("=" * 45)
+    time.sleep(2)
+    
+
 
 # User Interface Functions ----------------------------------------------------
 
