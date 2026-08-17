@@ -273,13 +273,22 @@ def getValidMenuSelection():
 
 # Flow Control Functions ------------------------------------------------------
 
-def endGame() -> None:
+def end_game(final_score: int | None = None) -> None:
+    """
+    Displays the game-over or exit screen.
+    
+    If final_score is provided, displays performance stats.
+    Otherwise, displays a standard farewell message.
+
     # Would be replaced with a graphic in future versions
+    """
+    clear_screen()
     print() # Blank line for formatting    
     print("Thanks for playing!")
     print() # Blank line for formatting   
-    
+
     return None    
+   
 
 def main():
     """
