@@ -18,11 +18,11 @@ game ends.
 Try to beat your previous high score!"
 """
 
-import json # For cashing country data from countries.dev API
-import os # Import os library to clear screen between rounds
-import random # Import random module for choosing Google Searches
-import requests # Read calls to the countries.dev API
-import time # To pause between response to user input and new screen
+import json
+import os
+import random
+import time
+import requests
 
 
 # Countries.dev Functions -----------------------------------------------------
@@ -67,8 +67,7 @@ def load_country_data(filename: str = "country_data.json") -> list[dict]:
     """
     Loads country records from country_data.json handling the 'data =' prefix.
 
-    Caching worked better than holding the dictionary in working memory, 
-    but now I need the game logic to access the json data.
+    Caching worked better than holding the dictionary in working memory, but now I need the game logic to access the json data.
     """
     if not os.path.exists(filename):
         print(f"Error: Could not find '{filename}'.")
@@ -98,7 +97,7 @@ def writeToJson(country_list: list[dict]) -> None:
 
     # print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes    
 
-    return None  
+    return None    
 
 
 # High or Low Game Functions --------------------------------------------------
@@ -256,37 +255,18 @@ def displayMenu() -> int:
     return getValidMenuSelection()
 
 
-# Validation for menu selection
-# Used in * function
-def getValidMenuSelection():
-    # Loop until valid input is received
+def getValidMenuSelection() -> int:
+    """Prompts and validates menu input without redundant prompts."""
     while True:
-        # Prompts user for region
-        menuSelection = input("Which region would you like to play?: ")  
-
-        # Check if input is valid BEFORE returning error
-
-        # Check if input is a number
-        # if menuSelection.isdigit() doesn't work.  .isdigit() is a string method.
+        menu_selection = input("Which region would you like to play? (1-7): ").strip()
         try:
-            # Attempt to convert the value to an integer to check if it is a number.
-            regionNumber = int(menuSelection)
-
-            # Check if the input is in a valid range between 1 and 5
-            if (regionNumber >= 1) and (regionNumber <= 7):
-                # Valid input
-                # print(regionNumber) # Debugging purposes
-                return regionNumber  # Return it, breaking the loop
+            region_number = int(menu_selection)
+            if 1 <= region_number <= 7:
+                return region_number
             else:
-                print("Sorry.  I didn't understand that.")
-                # Display error if validation fails
-                print("Error: Selection must be a number 1 through 7.")
-                menuSelection = input("Please select a Menu Item (1-7): ")  # Prompt user again.
-        except (ValueError, TypeError):
-            # If menuSelection IS NOT a number
-            # If execution reaches this point, the input was invalid.  Prompt user again.
-            print(f"Error: Please select a menu item with a number 1 through 7.")  # Display error
-            menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
+                print("Error: Selection must be a number between 1 and 7.\n")
+        except ValueError:
+            print("Error: Invalid input. Please enter a valid number (1-7).\n")
 
 
 # Flow Control Functions ------------------------------------------------------
@@ -321,8 +301,8 @@ def end_game(final_score: int | None = None) -> None:
     print("\nThanks for playing the Global Population Game!")
     print() # Blank line for formatting 
     print("=" * 45)
-    time.sleep(2)  
-   
+    time.sleep(2)
+
 
 def main():
     """
@@ -365,7 +345,6 @@ def main():
             break
 
 
-# Launch the program
 if __name__ == "__main__":
     main()
 
