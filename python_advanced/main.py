@@ -5,6 +5,7 @@ import requests
 
 
 # Countries.dev Functions -----------------------------------------------------
+
 def getRegionCountryData(region: str) -> list[dict]:
     """
     Fetch all country names and populations for a given region.
@@ -48,9 +49,13 @@ def writeToJson(country_list: list[dict]) -> None:
     with open("country_data.json", "w", encoding="utf-8") as f:
         f.write(f"data = {formatted_json}\n")
 
-    print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes
+    # print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes
 
     return None
+
+
+# High or Low Game Functions --------------------------------------------------
+
 
 
 # User Interface Functions ----------------------------------------------------
@@ -78,9 +83,6 @@ def displayMenu():
     print("[3] Asia")
     print("[4] Europe")
     print("[5] Oceania")
-    print("-" * 25) 
-    print("\n ...Or choose to play a global round!\n")
-    print("-" * 25) 
     print("[6] All nations")
     print("-" * 25) # Visual divider
     print("[7] End game")
@@ -124,6 +126,8 @@ def getValidMenuSelection():
             print(f"Error: Please select a menu item with a number 1 through 7.")  # Display error
             menuSelection = input(f"Please select a Menu Item (1-7): ")  # Prompt user again.
 
+
+# Flow Control Functions ------------------------------------------------------
 
 def main():
     # Flow control
