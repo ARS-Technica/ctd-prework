@@ -114,8 +114,14 @@ def prompt_user(first_choice, second_choice):
     pass
 
 # Create a function with game logic
-def higher_lower_game():
-    pass 
+def higher_lower_game(dataset: list[dict]):
+    """
+    Runs the game loop using the loaded dataset.
+    """
+    if len(dataset) < 2:
+        print("\nError: Not enough country data available to play this region.")
+        time.sleep(2)
+        endGame()
 
 # User Interface Functions ----------------------------------------------------
 
