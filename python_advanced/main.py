@@ -102,7 +102,6 @@ def writeToJson(country_list: list[dict]) -> None:
 
 # High or Low Game Functions --------------------------------------------------
 
-# Create a function to evaluate player's guesses
 def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
     """
     Compares populations and evaluates the player's guess.
@@ -141,7 +140,6 @@ def prompt_user(first_choice: dict, second_choice: dict) -> bool | str:
             print("Invalid input. Please enter 'A', 'B', or 'Q'.")
 
 
-# Create a function with game logic
 def higher_lower_game(dataset: list[dict]):
     """
     Runs the game loop using the loaded dataset.
@@ -250,8 +248,6 @@ def displayMenu() -> int:
     print("[7] End game")
     print() # Blank line for formatting
     print("=" * 45) # Visual divider
-
-    # return  # Returns nothing
 
     return getValidMenuSelection()
 
@@ -363,5 +359,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() # Launch application
 
