@@ -320,12 +320,25 @@ def main():
             selected_region = region_names[region_selection - 1]
             print(f"\nFetching data for {selected_region} and saving to country_data.json...")
             populations = getRegionCountryData(selected_region)
+
+            # Handle API failures
+            if not populations:
+                print("Failed to load country data. Please try again.")
+                time.sleep(2)
+                continue
+
             writeToJson(populations)
 
         elif region_selection == 6:
             # Option 6: Global play (all 5 continents combined)
             print("\nFetching data for all regions and saving to country_data.json...")
-            getGlobalCountriesAndPopulations()
+
+            # Handle API failures            
+            global_data = getGlobalCountriesAndPopulations()
+            if not global_data:
+                print("Failed to load global data. Please try again.")
+                time.sleep(2)
+                continue
 
         else:
             # Option 7: Exit game
