@@ -114,6 +114,20 @@ def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
     pop_a = first_choice["population"]
     pop_b = second_choice["population"]
 
+    a_is_larger = pop_a >= pop_b
+
+    if (guess == "a" and a_is_larger) or (guess == "b" and not a_is_larger):
+        print(f"\nCorrect!")
+        print(f"{first_choice['country']} has a population of {pop_a:,}.")
+        print(f"{second_choice['country']} has a population of {pop_b:,}.")
+
+        return True
+    else:
+        print(f"\nWrong!")
+        print(f"{first_choice['country']} has a population of {pop_a:,}.")
+        print(f"{second_choice['country']} has a population of {pop_b:,}.")
+
+        return False
 
 
 def prompt_user(first_choice: dict, second_choice: dict) -> bool:
