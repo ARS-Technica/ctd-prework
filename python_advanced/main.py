@@ -282,10 +282,10 @@ def endGame() -> None:
     return None    
 
 def main():
-    # Flow control
-    region_selection = displayMenu()
-    # print(region_selection) # Debugging purposes
-
+    """
+    Controls overall program flow: presents the region selection menu,
+    triggers API data fetching and saving, and launches the game loop.
+    """
     region_names = ["Africa", "Americas", "Asia", "Europe", "Oceania"] 
 
     if 1 <= region_selection <= 5:
