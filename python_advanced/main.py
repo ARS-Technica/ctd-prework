@@ -66,6 +66,14 @@ def getGlobalCountriesAndPopulations() -> list[dict]:
     return combined_data
 
 
+def load_country_data(filename: str = "country_data.json") -> list[dict]:
+    """
+    Loads country records from country_data.json handling the 'data =' prefix.
+    """
+
+    pass
+
+
 def writeToJson(country_list: list[dict]) -> None:
     """
     Writes a list of country dictionaries to a JSON-formatted file.
