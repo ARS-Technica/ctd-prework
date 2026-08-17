@@ -235,8 +235,9 @@ def displayMenu() -> int:
     print() # Blank line for formatting
     print("=" * 45) # Visual divider
     print() # Blank line for formatting
-    print("Welcome to the global population game.")
+    print("Welcome to the Global Population Game!")
     print("Select a region to fetch its countries and play!\n")
+    print("=" * 45) # Visual divider  
     print() # Blank line for formatting
     print("[1] Africa")
     print("[2] Americas")
@@ -284,7 +285,6 @@ def end_game(final_score: int | None = None) -> None:
     print("                 GAME OVER")
     print() # Blank line for formatting 
     print("=" * 45)
-    print() # Blank line for formatting 
     
     if final_score is not None:
         print(f"\nYour final score was: {final_score}")
