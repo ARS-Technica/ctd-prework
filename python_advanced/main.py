@@ -329,7 +329,7 @@ def main():
 
         else:
             # Option 7: Exit game
-            print("\nThanks for playing! Goodbye.")
+            end_game()
             break
 
         # Read back the newly created JSON file from disk
