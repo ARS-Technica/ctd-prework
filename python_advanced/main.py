@@ -72,16 +72,16 @@ def writeToJson(country_list: list[dict]) -> None:
 
     Formatted with the 'data = [...]' prefix.
     """
-    # Serialize the list of dictionaries to a JSON-formatted string
-    formatted_json = json.dumps(country_list, indent=4, ensure_ascii=False)   
+    # Serialize the list of dictionaries to a JSON-formatted string    
+    formatted_json = json.dumps(country_list, indent=4, ensure_ascii=False)
 
     # Write to file
     with open("country_data.json", "w", encoding="utf-8") as f:
         f.write(f"data = {formatted_json}\n")
 
-    # print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes
+    # print(f"Successfully saved {len(country_list)} records to country_data.json") # Debugging purposes    
 
-    return None
+    return None  
 
 
 # High or Low Game Functions --------------------------------------------------
