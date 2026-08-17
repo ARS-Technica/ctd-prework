@@ -18,11 +18,11 @@ game ends.
 Try to beat your previous high score!"
 """
 
-import json
-import os
-import random
-import time
-import requests
+import json      # Used to create and JSON file for caching API data
+import os        # Import os library to clear screen between rounds (clearing screen, file checks) 
+import random    # Import random module for choosing countries for each round
+import time      # To pause between response to user input and new screen
+import requests  # To call the countries.dev API
 
 
 # Countries.dev Functions -----------------------------------------------------
@@ -163,7 +163,7 @@ def higher_lower_game(dataset: list[dict]):
     # Round Opening Screen
     print("=" * 45)
     print() # Blank line for formatting
-    print("     POPULATION HIGHER OR LOWER GAME")
+    print("     GLOBAL POPULATION GAME")
     print() # Blank line for formatting
     print("=" * 45)
     print() # Blank line for formatting
@@ -248,7 +248,8 @@ def displayMenu() -> int:
     print("[6] All nations (Global)")
     print() # Blank line for formatting
     print("[7] End game")
-    print("-" * 45) # Visual divider
+    print() # Blank line for formatting
+    print("=" * 45) # Visual divider
 
     # return  # Returns nothing
 
