@@ -128,17 +128,17 @@ def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
 
 def prompt_user(first_choice: dict, second_choice: dict) -> bool:
     """
-    Prompts the player to choose A, B, or Esc to quit.
+    Prompts the player to choose A, B, or Q to quit.
     """
     while True:
-        guess = input("\nWhich country has a higher population? Select A or B (Esc to quit): ").strip().lower()
+        guess = input("\nWhich country has a higher population? Select A or B (Q to quit): ").strip().lower()
         
-        if guess == "esc":
-            return "esc"
+        if guess == "q":
+            return "q"
         elif guess in ["a", "b"]:
             return evaluate_guess(guess, first_choice, second_choice)
         else:
-            print("Invalid input. Please enter 'A', 'B', or 'Esc'.")
+            print("Invalid input. Please enter 'A', 'B', or 'Q'.")
 
 
 # Create a function with game logic
@@ -183,7 +183,7 @@ def higher_lower_game(dataset: list[dict]):
         result = prompt_user(first, second)
 
         # Handle player choosing to quit
-        if result == "esc":
+        if result == "q":
             print() # Blank line for formatting
             print("\nExiting current game round...")
             time.sleep(2)
