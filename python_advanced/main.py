@@ -18,14 +18,11 @@ game ends.
 Try to beat your previous high score!"
 """
 
-
 import json # For cashing country data from countries.dev API
 import os # Import os library to clear screen between rounds
 import random # Import random module for choosing Google Searches
 import requests # Read calls to the countries.dev API
 import time # To pause between response to user input and new screen
-
-# Import dataset for comparisons
 
 
 # Countries.dev Functions -----------------------------------------------------
@@ -132,17 +129,17 @@ def evaluate_guess(guess: str, first_choice: dict, second_choice: dict) -> bool:
 
 def prompt_user(first_choice: dict, second_choice: dict) -> bool:
     """
-    Prompts user to select A or B.
+    Prompts the player to choose A, B, or Esc to quit.
     """
-    guess = input("\nWhich country has a higher population? Select A or B: ").strip().lower()
-
-    if guess in ["a", "b"]:
-        # If the user enters a valid answer
-        return evaluate_guess(guess, first_choice, second_choice)
-    else:
-        # Prompt the user to entry only "A" or "B"
-        print("Invalid input. Please enter 'A' or 'B'.")
-        prompt_user()
+    while True:
+        guess = input("\nWhich country has a higher population? Select A or B (Esc to quit): ").strip().lower()
+        
+        if guess == "esc":
+            return "esc"
+        elif guess in ["a", "b"]:
+            return evaluate_guess(guess, first_choice, second_choice)
+        else:
+            print("Invalid input. Please enter 'A', 'B', or 'Esc'.")
 
 
 # Create a function with game logic
