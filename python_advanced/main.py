@@ -176,25 +176,36 @@ def higher_lower_game(dataset: list[dict]):
     print(f"You have {max_strikes} strikes. Guess which nation is larger!\n")
 
     while strikes < max_strikes:
-        # Round Logic
+        # Round Logic        
+        print(f"\n[Score: {score} | Strikes: {strikes}/{max_strikes}]")
+        print(f"Compare A: {first['country']}")
+        print("    vs")
+        print(f"Against B: {second['country']}")
 
+        is_correct = prompt_user(first, second)
+
+        if is_correct:
+            score += 1
+            print(f"\nNice job! Current Score: {score}")
+        else:
+            strikes += 1
+            print(f"\nStrike {strikes} of {max_strikes}!")
+
+        # Advance slot A to slot B and pick a new slot B
+        first = second
+        remaining_pool = [c for c in dataset if c != first]
+        if not remaining_pool:
+            print("\nYou've played through all available countries in this region!")
+            break
+
+        second = random.choice(remaining_pool)
+    
         # Pause between rounds
-        time.sleep(2.5)
+        time.sleep(3)
         clear_screen()
 
-    
-    # Game Over Screen
-    print("=" * 45)
-    print() # Blank line for formatting
-    print(f"  GAME OVER!  ")
-    print() # Blank line for formatting
-    print("=" * 45)
-    print() # Blank line for formatting
-    print(f"  Final Score: {score}")
-    print() # Blank line for formatting
-    print("=" * 45)
-    time.sleep(2)
-    
+    # Call the Game Over screen with the final score
+    end_game(final_score=score)
 
 
 # User Interface Functions ----------------------------------------------------
