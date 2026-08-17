@@ -150,17 +150,15 @@ def higher_lower_game(dataset: list[dict]):
     if len(dataset) < 2:
         print("\nError: Not enough country data available to play this region.")
         time.sleep(2)
-        endGame()
+        return
 
-    # Track the progression of the game
-    score = 0  # Display the number of correct answers
-    strikes = 0 # Track the number of wrong answers
+    score = 0       # Display the number of correct answers
+    strikes = 0     # Track the number of wrong answers
     max_strikes = 3 # Game ends after three wrong answers
 
     # Pick two distinct initial countries
     first, second = random.sample(dataset, 2)
 
-    # Start with a clean screen to declutter interface
     clear_screen()
 
     # Round Opening Screen
@@ -175,15 +173,27 @@ def higher_lower_game(dataset: list[dict]):
     while strikes < max_strikes:
         # Round Logic        
         print(f"\n[Score: {score} | Strikes: {strikes}/{max_strikes}]")
+        print() # Blank line for formatting
+        print() # Blank line for formatting
         print(f"Compare A: {first['country']}")
         print("    vs")
         print(f"Against B: {second['country']}")
+        print() # Blank line for formatting
+        print() # Blank line for formatting
 
-        is_correct = prompt_user(first, second)
+        result = prompt_user(first, second)
 
-        if is_correct:
+        # Handle player choosing to quit
+        if result == "esc":
+            print() # Blank line for formatting
+            print("\nExiting current game round...")
+            time.sleep(2)
+            break
+
+        if result is True:
             score += 1
             print(f"\nNice job! Current Score: {score}")
+            print() # Blank line for formatting
         else:
             strikes += 1
             print(f"\nStrike {strikes} of {max_strikes}!")
