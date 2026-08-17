@@ -322,28 +322,40 @@ def main():
     Controls overall program flow: presents the region selection menu,
     triggers API data fetching and saving, and launches the game loop.
     """
-    region_names = ["Africa", "Americas", "Asia", "Europe", "Oceania"] 
+    region_names = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
 
     while True:
         clear_screen()
         region_selection = displayMenu()
-        
+
         if 1 <= region_selection <= 5:
-            # Fetch names AND populations in 1 HTTP request
+            # Options 1 through 5: Specific regional play
             selected_region = region_names[region_selection - 1]
+            print(f"\nFetching data for {selected_region} and saving to country_data.json...")
             populations = getRegionCountryData(selected_region)
-            # print(populations) # Debugging purposes
-    
-            # Write the county and population data to a JSON        
             writeToJson(populations)
-    
+
         elif region_selection == 6:
-            # Global: combines all 5 regions
-            global_data = getGlobalCountriesAndPopulations()
-            print(global_data)
-    
+            # Option 6: Global play (all 5 continents combined)
+            print("\nFetching data for all regions and saving to country_data.json...")
+            getGlobalCountriesAndPopulations()
+
         else:
-            endGame()
+            # Option 7: Exit game
+            print("\nThanks for playing! Goodbye.")
+            break
+
+        # Read back the newly created JSON file from disk
+        current_game_data = load_country_data("country_data.json")
+
+        # Launch the Higher/Lower game using the loaded data
+        higher_lower_game(current_game_data)
+
+        # Check if the player wants to return to the region menu or quit
+        play_again = input("\nReturn to main menu to choose another region? (Y/N): ").strip().lower()
+        if play_again != "y":
+            print("\nThanks for playing! Goodbye.")
+            break
 
 
 # Launch the program
