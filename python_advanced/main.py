@@ -323,9 +323,10 @@ def main():
 
             # Handle API failures
             if not populations:
-                print("Failed to load country data. Please try again.")
+                print(f"\nConnection Error: Unable to retrieve data for {selected_region}.")
+                print("Please check your internet connection and try again.")
                 time.sleep(2)
-                continue
+                continue # Skips file writing & game launch, returning to displayMenu()
 
             writeToJson(populations)
 
@@ -336,9 +337,11 @@ def main():
             # Handle API failures            
             global_data = getGlobalCountriesAndPopulations()
             if not global_data:
-                print("Failed to load global data. Please try again.")
+                print(f"\nConnection Error: Unable to retrieve global data.")
+                print("Please check your internet connection and try again.")
+
                 time.sleep(2)
-                continue
+                continue # Skips file writing & game launch, returning to displayMenu()
 
         else:
             # Option 7: Exit game
