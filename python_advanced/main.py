@@ -69,9 +69,21 @@ def getGlobalCountriesAndPopulations() -> list[dict]:
 def load_country_data(filename: str = "country_data.json") -> list[dict]:
     """
     Loads country records from country_data.json handling the 'data =' prefix.
-    """
 
-    pass
+    Caching worked better than holding the dictionary in working memory, 
+    but now I need the game logic to access the json data.
+    """
+    if not os.path.exists(filename):
+        print(f"Error: Could not find '{filename}'.")
+        return []
+
+    with open(filename, "r", encoding="utf-8") as f:
+        content = f.read().strip()
+        if content.startswith("data ="):
+            content = content[len("data ="):].strip()
+        dataset = json.loads(content)
+
+    return [item for item in dataset if item.get("population") is not None]
 
 
 def writeToJson(country_list: list[dict]) -> None:
@@ -174,6 +186,14 @@ def getValidMenuSelection():
 
 # Flow Control Functions ------------------------------------------------------
 
+def endGame() -> None:
+    # Would be replaced with a graphic in future versions
+    print() # Blank line for formatting    
+    print("Thanks for playing!")
+    print() # Blank line for formatting   
+    
+    return None    
+
 def main():
     # Flow control
     region_selection = displayMenu()
@@ -196,9 +216,7 @@ def main():
         print(global_data)
 
     else:
-        # End Game
-        print("Thanks for playing!")
-        return None
+        endGame()
 
 
 # Launch the program
