@@ -107,34 +107,32 @@ def higher_lower_game():
 
 # User Interface Functions ----------------------------------------------------
 
-def displayMenu():
-    # Display the menu
+def displayMenu() -> int:
+    """
+    Displays the main menu (Lists the regions of the world)
+    and returns a validated user selection.
+    """
     # [1] Africa, [2] Americas, [3] Asia, [4] Europe, [5] Oceania, [6] Global, [7] End Game
 
-    print("Global Population Game")
     # Display the menu (List the regions of the world)
-
-    print("\n")
-    print("-" * 25) # Visual divider
-    print("\nWelcome to the global population game.  To play, select a region of" \
-    "the world. Each round, you will be shown to nations.  Select the nation with" \
-    "the higher population to advance to the next round!\n")
-    print("-" * 25) # Visual divider
+    print("=" * 45) # Visual divider
     print() # Blank line for formatting
-    print("-" * 25) # Visual divider
-    print("To begin the game, select a regions:")
-    print("-" * 25) # Visual divider
-    print("-" * 25) # Visual divider
+    print("        GLOBAL POPULATION GAME")
+    print() # Blank line for formatting
+    print("=" * 45) # Visual divider
+    print() # Blank line for formatting
+    print("Welcome to the global population game.")
+    print("Select a region to fetch its countries and play!\n")
+    print() # Blank line for formatting
     print("[1] Africa")
     print("[2] Americas")
     print("[3] Asia")
     print("[4] Europe")
     print("[5] Oceania")
-    print("[6] All nations")
-    print("-" * 25) # Visual divider
+    print("[6] All nations (Global)")
+    print("-" * 45) # Visual divider    
     print("[7] End game")
-    print("-" * 25) # Visual divider
-    print() # Blank line for formatting
+    print("-" * 45) # Visual divider
 
     # return  # Returns nothing
 
